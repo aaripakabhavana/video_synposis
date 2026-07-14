@@ -9,8 +9,9 @@ window.AUTH_CONFIG = {
   SUPABASE_URL: 'https://orsshszgtquvjkisnlmk.supabase.co',
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9yc3Noc3pndHF1dmpraXNubG1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM1MjA2MTYsImV4cCI6MjA5OTA5NjYxNn0.vdHcyiDvxNUyCKBYN18hxESnVWya9Yt-ETb7uS14wF4',
 
-  // Our new Node.js backend URL
-  API_BASE_URL: 'http://localhost:8000',
+  // Backend API base. Empty = same origin as the page, so it works both on
+  // Vercel (https://your-app.vercel.app) and locally (http://localhost:8000).
+  API_BASE_URL: '',
 
   // localStorage keys for offline fallback (optional, but good for caching)
   SESSION_KEY: 'vidsynCurrentUser',

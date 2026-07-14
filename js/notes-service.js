@@ -247,7 +247,10 @@
     // If no title is provided, try to extract a fallback title from the URL
     var resolvedTitle = title || parseFallbackTitle(videoUrl);
     
-    var apiUrl = window.AUTH_CONFIG && window.AUTH_CONFIG.API_BASE_URL ? window.AUTH_CONFIG.API_BASE_URL : 'http://localhost:8000';
+    // '' means same origin. Only fall back if AUTH_CONFIG is entirely missing.
+    var apiUrl = (window.AUTH_CONFIG && typeof window.AUTH_CONFIG.API_BASE_URL === 'string')
+      ? window.AUTH_CONFIG.API_BASE_URL
+      : '';
     console.log("Calling backend AI service for:", resolvedTitle);
     
     return fetch(`${apiUrl}/api/notes/generate`, {

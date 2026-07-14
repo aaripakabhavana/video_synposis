@@ -40,7 +40,8 @@ async function generateWithFallback(prompt) {
       const completion = await groq.chat.completions.create({
         messages: [{ role: 'user', content: prompt }],
         model: 'llama-3.1-8b-instant', // Updated from decommissioned llama3-8b-8192
-        response_format: { type: 'json_object' }
+        response_format: { type: 'json_object' },
+        max_tokens: 3000
       });
       return JSON.parse(completion.choices[0].message.content);
     } catch (err) {
@@ -61,7 +62,8 @@ async function generateWithFallback(prompt) {
       const completion = await openai.chat.completions.create({
         model: 'openrouter/free', // Dynamically routes to an active free model
         messages: [{ role: 'user', content: prompt }],
-        response_format: { type: 'json_object' }
+        response_format: { type: 'json_object' },
+        max_tokens: 3000
       });
       return JSON.parse(completion.choices[0].message.content);
     } catch (err) {
@@ -135,7 +137,7 @@ router.post('/generate', async (req, res) => {
           }
         }
 
-        const maxChars = 6000;
+        const maxChars = 3000;
         let fullText = transcript.map(t => t.text).join(' ');
         
         if (fullText.length > maxChars) {
