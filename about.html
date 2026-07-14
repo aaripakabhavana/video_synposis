@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Vidsyn AI - Learn about our mission, technology stack, and how we transform long videos into smart summaries.">
+  <title>About Us - Vidsyn AI</title>
+  
+  <!-- Bootstrap 5.3.0 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .about-header {
+      padding: 8rem 0 4rem;
+      position: relative;
+      text-align: center;
+    }
+    .tech-card {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: var(--border-radius-md);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition-normal);
+    }
+    .tech-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--hover-shadow);
+      border-color: rgba(var(--primary-rgb), 0.2);
+    }
+    .tech-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-nav py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center fw-800" href="index.html">
+        <i class="bi bi-play-btn-fill text-gradient me-2 fs-3"></i>
+        <span class="text-gradient fw-bold fs-4">Vidsyn AI</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link px-3" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="index.html#how-it-works">How It Works</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 active" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="index.html#contact">Contact</a>
+          </li>
+          <!-- Theme Toggle -->
+          <li class="nav-item px-2 my-2 my-lg-0">
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
+              <i class="bi bi-moon-stars-fill"></i>
+              <i class="bi bi-sun-fill"></i>
+            </button>
+          </li>
+          <!-- CTA Buttons -->
+          <li class="nav-item ms-lg-3 d-flex gap-2">
+            <a href="login.html" class="btn btn-outline-custom">Login</a>
+            <a href="signup.html" class="btn btn-primary-gradient">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Header Section -->
+  <section class="about-header overflow-hidden">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow-2"></div>
+    <div class="container reveal active">
+      <h1 class="display-4 fw-extrabold mb-3">About <span class="text-gradient">Vidsyn AI</span></h1>
+      <p class="lead text-secondary max-w-600 mx-auto fs-5">
+        We are on a mission to transform how the world learns from video content by turning hours of footage into smart, structured, and actionable summaries.
+      </p>
+    </div>
+  </section>
+
+  <!-- Problem & Objective Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4">
+        <!-- Problem Statement -->
+        <div class="col-md-6 reveal">
+          <div class="glass-card p-4 p-md-5 h-100">
+            <div class="text-danger mb-3 fs-3">
+              <i class="bi bi-exclamation-octagon-fill"></i>
+            </div>
+            <h3 class="fw-bold mb-3">The Problem</h3>
+            <p class="text-secondary mb-0">
+              In an era of digital learning, video has become the primary medium for knowledge. However, watching hours of video lectures, webinars, tutorials, or podcasts is incredibly time-consuming. Students and professionals struggle with information overload, difficulty in locating specific timestamps, and the tedious process of manual note-taking.
+            </p>
+          </div>
+        </div>
+        <!-- Objective -->
+        <div class="col-md-6 reveal" style="transition-delay: 0.15s;">
+          <div class="glass-card p-4 p-md-5 h-100">
+            <div class="text-success mb-3 fs-3">
+              <i class="bi bi-bullseye"></i>
+            </div>
+            <h3 class="fw-bold mb-3">Our Objective</h3>
+            <p class="text-secondary mb-0">
+              Vidsyn AI aims to solve this by providing an intelligent, automated video synopsis generator. By pasting a simple YouTube URL, users can instantly extract highly accurate transcriptions, generate structured summaries (bullet points or deep dives), and chat interactively with the video's content to get instant answers with cited timestamps.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works & Features Summary -->
+  <section class="py-5 bg-secondary-subtle bg-opacity-10 border-y border-secondary-subtle">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6 reveal">
+          <span class="text-gradient fw-bold text-uppercase tracking-wider">Product Highlights</span>
+          <h2 class="display-6 fw-bold mt-2 mb-4">Core Features & Workflow</h2>
+          <p class="text-secondary mb-4">
+            Vidsyn AI leverages state-of-the-art speech-to-text models and large language models to process video files in seconds. The system transcribes audio, structures the text, extracts key concepts, and formats them beautifully for study.
+          </p>
+          <ul class="list-unstyled">
+            <li class="d-flex align-items-start mb-3">
+              <i class="bi bi-check-circle-fill text-primary me-3 mt-1"></i>
+              <div>
+                <strong>Accurate Transcripts:</strong> Generates fully timestamped transcripts.
+              </div>
+            </li>
+            <li class="d-flex align-items-start mb-3">
+              <i class="bi bi-check-circle-fill text-primary me-3 mt-1"></i>
+              <div>
+                <strong>Custom summaries:</strong> Offers short, medium, and long summaries depending on user needs.
+              </div>
+            </li>
+            <li class="d-flex align-items-start">
+              <i class="bi bi-check-circle-fill text-primary me-3 mt-1"></i>
+              <div>
+                <strong>Interactive Chat Q&A:</strong> Ask anything and get answers mapped directly to the video.
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-6 reveal" style="transition-delay: 0.15s;">
+          <div class="glass-card p-4 p-md-5">
+            <h4 class="fw-bold mb-4"><i class="bi bi-rocket-takeoff-fill text-primary me-2"></i>Key Benefits</h4>
+            <div class="mb-4">
+              <h6 class="fw-bold text-primary-emphasis">Save 80% of Your Time</h6>
+              <p class="text-secondary small mb-0">Skip the fluff. Get straight to the core takeaways of any lecture or tutorial in a fraction of the time.</p>
+            </div>
+            <div class="mb-4">
+              <h6 class="fw-bold text-primary-emphasis">Enhanced Retention</h6>
+              <p class="text-secondary small mb-0">Reviewing structured text summaries and key terms helps reinforce concepts much better than passive watching.</p>
+            </div>
+            <div>
+              <h6 class="fw-bold text-primary-emphasis">Study Anywhere, Offline</h6>
+              <p class="text-secondary small mb-0">Export transcripts and summaries to PDF or TXT to read, print, or integrate into your personal study setup.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Stack Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center max-w-600 mx-auto mb-5 reveal">
+        <span class="text-gradient fw-bold text-uppercase tracking-wider">Architecture</span>
+        <h2 class="display-6 fw-bold mt-2">Our Technology Stack</h2>
+        <p class="text-secondary">A robust and scalable setup designed to deliver fast, secure, and accurate video processing.</p>
+      </div>
+      
+      <div class="row g-4">
+        <!-- Frontend -->
+        <div class="col-lg-3 col-md-6 reveal">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-braces"></i></div>
+            <h5 class="fw-bold">Frontend</h5>
+            <p class="text-secondary small mb-0">HTML5, CSS3, Bootstrap 5, and modular JavaScript for a responsive, modern, and high-performance UI.</p>
+          </div>
+        </div>
+        <!-- Backend -->
+        <div class="col-lg-3 col-md-6 reveal" style="transition-delay: 0.1s;">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-cpu"></i></div>
+            <h5 class="fw-bold">Backend</h5>
+            <p class="text-secondary small mb-0">Python FastAPI (future integration) for high-speed asynchronous API requests and seamless data handling.</p>
+          </div>
+        </div>
+        <!-- Database -->
+        <div class="col-lg-3 col-md-6 reveal" style="transition-delay: 0.2s;">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-database-fill"></i></div>
+            <h5 class="fw-bold">Database</h5>
+            <p class="text-secondary small mb-0">MySQL (future integration) to securely store user credentials, summary history, and system settings.</p>
+          </div>
+        </div>
+        <!-- AI Services -->
+        <div class="col-lg-3 col-md-6 reveal" style="transition-delay: 0.3s;">
+          <div class="tech-card h-100">
+            <div class="tech-icon"><i class="bi bi-stars"></i></div>
+            <h5 class="fw-bold">AI Processing</h5>
+            <p class="text-secondary small mb-0">Whisper API for high-fidelity speech-to-text and OpenAI API for semantic summarization and interactive Q&A.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Future Scope Section -->
+  <section class="py-5 bg-secondary-subtle bg-opacity-10 border-y border-secondary-subtle">
+    <div class="container">
+      <div class="text-center max-w-600 mx-auto mb-5 reveal">
+        <span class="text-gradient fw-bold text-uppercase tracking-wider">Roadmap</span>
+        <h2 class="display-6 fw-bold mt-2">Future Enhancements</h2>
+        <p class="text-secondary">We are continuously working to expand the capabilities of Vidsyn AI.</p>
+      </div>
+      
+      <div class="row g-4">
+        <!-- Future 1 -->
+        <div class="col-md-4 reveal">
+          <div class="glass-card p-4 h-100">
+            <div class="text-primary mb-3 fs-3">
+              <i class="bi bi-journal-check"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Automated Quizzes</h5>
+            <p class="text-secondary small mb-0">Instantly generate flashcards, multiple-choice questions, and key-term quizzes from any video summary to test your knowledge.</p>
+          </div>
+        </div>
+        <!-- Future 2 -->
+        <div class="col-md-4 reveal" style="transition-delay: 0.15s;">
+          <div class="glass-card p-4 h-100">
+            <div class="text-primary mb-3 fs-3">
+              <i class="bi bi-diagram-3-fill"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Mind Map Visualizer</h5>
+            <p class="text-secondary small mb-0">Generate interactive mind maps and concept diagrams representing the topics discussed in the video, helping visual learners.</p>
+          </div>
+        </div>
+        <!-- Future 3 -->
+        <div class="col-md-4 reveal" style="transition-delay: 0.3s;">
+          <div class="glass-card p-4 h-100">
+            <div class="text-primary mb-3 fs-3">
+              <i class="bi bi-folder-fill"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Multi-Video Knowledge Base</h5>
+            <p class="text-secondary small mb-0">Group multiple summaries into subject folders and search across your entire library of summaries for quick cross-referencing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-5">
+    <div class="container">
+      <div class="row gy-4 mb-5">
+        <div class="col-lg-4">
+          <a class="d-flex align-items-center fw-800 mb-3 text-decoration-none" href="index.html">
+            <i class="bi bi-play-btn-fill text-gradient me-2 fs-3"></i>
+            <span class="text-gradient fw-bold fs-4">Vidsyn AI</span>
+          </a>
+          <p class="text-secondary mb-4">Empowering students and professionals to unlock knowledge from video content. Summarize, learn, and excel.</p>
+          <div class="d-flex gap-2">
+            <a href="#" class="social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="fw-bold mb-3 text-uppercase text-muted">Product</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html#how-it-works">How It Works</a></li>
+            <li class="mb-2"><a href="about.html">About Us</a></li>
+            <li class="mb-2"><a href="#">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="fw-bold mb-3 text-uppercase text-muted">Resources</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html#contact">Contact</a></li>
+            <li class="mb-2"><a href="#">Blog</a></li>
+            <li class="mb-2"><a href="#">Help Center</a></li>
+            <li class="mb-2"><a href="#">API Docs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h6 class="fw-bold mb-3 text-uppercase text-muted">Stay Updated</h6>
+          <p class="text-secondary small mb-3">Subscribe to our newsletter for the latest updates and tips.</p>
+          <form class="d-flex gap-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+            <input type="email" class="form-control form-control-sm" placeholder="Your email address" required>
+            <button type="submit" class="btn btn-primary-gradient px-3"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="row pt-4 border-top border-secondary-subtle text-center text-md-start">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <small class="text-muted">&copy; 2026 Vidsyn AI. All rights reserved.</small>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-muted small me-3">Privacy Policy</a>
+          <a href="#" class="text-muted small">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <div id="backToTop" class="back-to-top" aria-label="Scroll to top">
+    <i class="bi bi-arrow-up"></i>
+  </div>
+
+  <!-- Bootstrap 5 Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>

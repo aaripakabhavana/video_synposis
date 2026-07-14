@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\"---BRANCH---\")",
+      "PowerShell(\"---LOG---\")",
+      "PowerShell(\"---REMOTE---\")",
+      "PowerShell(git reset -q; \"unstaged all\"; git add -A; \"re-added\"; git status --short | Select-Object -First 30; \"...\"; \"Total staged files:\"; \\(git diff --cached --name-only | Measure-Object -Line\\).Lines)"
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to Vidsyn AI - Access your video summary dashboard.">
+  <title>Log In - Vidsyn AI</title>
+  
+  <!-- Bootstrap 5.3.0 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <style>
+    .auth-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 0 3rem;
+      position: relative;
+    }
+    .auth-card {
+      max-width: 450px;
+      width: 100%;
+    }
+    /* Segmented Control for Role */
+    .role-select-group {
+      display: flex;
+      gap: 10px;
+    }
+    .role-option {
+      flex: 1;
+      text-align: center;
+    }
+    .role-option input[type="radio"] {
+      display: none;
+    }
+    .role-label {
+      display: block;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition-fast);
+      color: var(--text-secondary);
+    }
+    .role-option input[type="radio"]:checked + .role-label {
+      border-color: var(--primary);
+      background: rgba(var(--primary-rgb), 0.1);
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top glass-nav py-3">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center fw-800" href="index.html">
+        <i class="bi bi-play-btn-fill text-gradient me-2 fs-3"></i>
+        <span class="text-gradient fw-bold fs-4">Vidsyn AI</span>
+      </a>
+      <div class="ms-auto d-flex align-items-center gap-3">
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme">
+          <i class="bi bi-moon-stars-fill"></i>
+          <i class="bi bi-sun-fill"></i>
+        </button>
+            <a href="index.html" class="btn btn-outline-custom d-none d-sm-inline-block"><i class="bi bi-arrow-left me-1"></i>Back to Home</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Auth Section -->
+  <div class="auth-wrapper overflow-hidden">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-bg-glow-2"></div>
+    <div class="container d-flex justify-content-center">
+      <div class="auth-card glass-card p-4 p-md-5 reveal active">
+
+        <div class="text-center mb-4">
+          <h2 class="fw-bold">Welcome Back</h2>
+          <p class="text-secondary">Log in to manage and summarize your videos</p>
+        </div>
+
+        <form id="loginForm" class="needs-validation" novalidate>
+          <!-- Email -->
+          <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">Email Address</label>
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control border-start-0" id="email" placeholder="Enter your email address" required>
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label for="password" class="form-label fw-semibold">Password</label>
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control border-start-0" id="password" placeholder="Enter your password" required>
+              <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+          </div>
+
+          <!-- Role Selection -->
+          <div class="mb-3">
+            <label for="role" class="form-label fw-semibold">Role</label>
+            <div class="input-group">
+              <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="bi bi-person-badge"></i></span>
+              <input type="text" class="form-control border-start-0" id="role" name="role" placeholder="Enter your role (e.g. Student)" required>
+              <div class="invalid-feedback">Please enter your role.</div>
+            </div>
+          </div>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="rememberMe">
+              <label class="form-check-label text-secondary small" for="rememberMe">
+                Remember me
+              </label>
+            </div>
+            <a href="#" id="forgotPasswordBtn" class="text-primary small text-decoration-none">Forgot Password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary-gradient w-100 py-2.5 mb-3">
+            Log In <i class="bi bi-box-arrow-in-right ms-1"></i>
+          </button>
+
+          <!-- Divider -->
+          <div class="d-flex align-items-center my-3">
+            <hr class="flex-grow-1 border-secondary opacity-25">
+            <span class="text-muted small px-2">or</span>
+            <hr class="flex-grow-1 border-secondary opacity-25">
+          </div>
+
+          <!-- Google Sign-In button (rendered by Google Identity Services) -->
+          <div id="googleSignInBtn" class="d-flex justify-content-center mb-3"></div>
+
+          <!-- Signup Redirect Link -->
+          <div class="text-center">
+            <span class="text-secondary small">Don't have an account? </span>
+            <a href="signup.html" class="text-primary small fw-semibold text-decoration-none">Sign Up</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal (Signup Success) -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-body text-center p-5">
+          <div class="mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+          </div>
+          <h3 class="fw-bold mb-3" id="successModalLabel">Account Created Successfully!</h3>
+          <p class="text-secondary mb-4">Your Vidsyn AI account has been set up. You can now log in below to access your dashboard.</p>
+          <button type="button" class="btn btn-primary-gradient px-5 py-2.5" data-bs-dismiss="modal">
+            Log In Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Password Reset Modal -->
+  <div class="modal fade" id="resetPasswordModal" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-card border-0">
+        <div class="modal-body p-4 p-md-5">
+          <div class="text-center mb-4">
+            <div style="width:60px;height:60px;background:rgba(var(--primary-rgb), 0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 15px;">
+              <i class="bi bi-shield-lock-fill text-gradient" style="font-size: 2rem;"></i>
+            </div>
+            <h4 class="fw-bold" id="resetPasswordModalLabel">Reset Your Password</h4>
+            <p class="text-secondary small">Set a new password for <strong id="resetEmailSpan" class="text-primary"></strong></p>
+          </div>
+          <form id="resetPasswordForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="newPassword" class="form-label fw-semibold">New Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="bi bi-lock"></i></span>
+                <input type="password" class="form-control border-start-0" id="newPassword" placeholder="Minimum 6 characters" minlength="6" required>
+                <div class="invalid-feedback">Password must be at least 6 characters long.</div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="confirmNewPassword" class="form-label fw-semibold">Confirm Password</label>
+              <div class="input-group">
+                <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" class="form-control border-start-0" id="confirmNewPassword" placeholder="Re-enter password" required>
+                <div class="invalid-feedback" id="confirmNewPasswordFeedback">Please confirm your new password.</div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary-gradient w-100 py-2.5">
+              Update Password <i class="bi bi-check-circle ms-1"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+       const form = document.getElementById('loginForm');
+
+       // Auto-select role if user just registered (UX improvement)
+       const registeredRole = localStorage.getItem('registeredRole');
+       if (registeredRole) {
+         const roleSelect = document.getElementById('role');
+         if (roleSelect) {
+           roleSelect.value = registeredRole;
+         }
+         // Clear it so it doesn't affect future sessions
+         localStorage.removeItem('registeredRole');
+       }
+
+       // Check for signup success query parameter to show popup modal
+       const urlParams = new URLSearchParams(window.location.search);
+       if (urlParams.get('signup') === 'success') {
+         const successModalEl = document.getElementById('successModal');
+         if (successModalEl) {
+           const successModal = new bootstrap.Modal(successModalEl);
+           successModal.show();
+         }
+       }
+
+       // Back to Home is now a direct anchor link — no modal needed
+
+       form.addEventListener('submit', async (event) => {
+         event.preventDefault();
+
+         if (!form.checkValidity()) {
+           event.stopPropagation();
+           form.classList.add('was-validated');
+           return;
+         }
+
+         const emailInput    = document.getElementById('email');
+         const passwordInput = document.getElementById('password');
+         
+         const enteredEmail    = emailInput.value.trim().toLowerCase();
+         const enteredPassword = passwordInput.value;
+
+         const submitBtn = form.querySelector('button[type="submit"]');
+         const originalBtnText = submitBtn.innerHTML;
+         submitBtn.disabled = true;
+         submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Logging in...`;
+
+         try {
+           // Call Supabase Auth via our VidsynAuth wrapper
+           await window.VidsynAuth.signInWithEmail(enteredEmail, enteredPassword);
+           
+           showToast('Login Successful!', `Welcome back! Redirecting to Dashboard...`, 'success');
+           
+           setTimeout(() => {
+             window.location.href = 'student-dashboard.html';
+           }, 1000);
+           
+         } catch (error) {
+           submitBtn.disabled = false;
+           submitBtn.innerHTML = originalBtnText;
+           
+           // Show error toast
+           showToast('Login Failed', error.message || 'Invalid credentials', 'error');
+         }
+       });
+
+       // ── Forgot Password Event Handlers ──
+       const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+       if (forgotPasswordBtn) {
+         forgotPasswordBtn.addEventListener('click', (e) => {
+           e.preventDefault();
+           showToast('Info', 'Password reset will be implemented with Supabase soon.', 'info');
+         });
+       }
+      });
+  </script>
+
+  <!-- ── Supabase & modular auth ── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/auth-config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="js/google-auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      GoogleAuth.mount({ containerId: 'googleSignInBtn', roleSelectId: 'role' });
+    });
+  </script>
+</body>
+</html>

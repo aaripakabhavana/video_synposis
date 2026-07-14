@@ -1,0 +1,22 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Misc scratch
+subagent_report.json
+subagent_result.txt
+subagent_result_full.txt
