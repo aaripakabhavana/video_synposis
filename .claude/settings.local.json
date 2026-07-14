@@ -4,7 +4,11 @@
       "PowerShell(\"---BRANCH---\")",
       "PowerShell(\"---LOG---\")",
       "PowerShell(\"---REMOTE---\")",
-      "PowerShell(git reset -q; \"unstaged all\"; git add -A; \"re-added\"; git status --short | Select-Object -First 30; \"...\"; \"Total staged files:\"; \\(git diff --cached --name-only | Measure-Object -Line\\).Lines)"
+      "PowerShell(git reset -q; \"unstaged all\"; git add -A; \"re-added\"; git status --short | Select-Object -First 30; \"...\"; \"Total staged files:\"; \\(git diff --cached --name-only | Measure-Object -Line\\).Lines)",
+      "PowerShell(git commit -q -m \"Initial commit: video synopsis app \\(frontend + backend\\)\")",
+      "PowerShell(git push -u origin main)",
+      "PowerShell(\"committed\")",
+      "PowerShell(\"--- pushing ---\")"
     ]
   }
 }
